@@ -69,9 +69,14 @@
     </dependency>
     <dependency>
         <groupId>${project.groupId}</groupId>
+        <artifactId>Common</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>${project.groupId}</groupId>
         <artifactId>Asteroids</artifactId>
         <version>${project.version}</version>
-        </dependency>
+    </dependency>
     <dependency>
         <groupId>${project.groupId}</groupId>
         <artifactId>Collision</artifactId>
@@ -93,4 +98,26 @@
         <version>${project.version}</version>
     </dependency>
   </dependencies>
+  
+  <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeArtifactIds>gdx-freetype-platform, gdx-freetype, gdx-box2d-platform, gdx, gdx-platform, gdx-backend-lwjgl, gdx-box2d, gdx-box2d-platform</includeArtifactIds>
+                            <outputDirectory>../mods-mvn</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
